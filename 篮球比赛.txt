@@ -1,0 +1,92 @@
+//篮球比赛。
+//1.主体窗体，有两个列表，左边10个运动员，右边5个。两个按钮，上场和下场。
+//只能上场5个，多了无法上场。
+//2.产生一个随机数，当比赛得分，产生一个随机数，当犯规次数。3次下场
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Basketball extends JFrame{
+	JLabel label1,label2,label3,label4;
+	JList<?> players1,players2;
+	JButton b1,b2,b3;
+	JTextField text1,text2;
+	public static void main(String[] args) {
+		Basketball bask = new Basketball();
+		bask.setVisible(true);
+	}
+	public Basketball() {
+		super();
+		setTitle("篮球比赛");
+		setBounds(200,200,400,300);
+		getContentPane().setLayout(null);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		label1 = new JLabel("候选区运动员");
+		label1.setBounds(20,20,100,20);
+		getContentPane().add(label1);
+		String[] player1 = { "篮球运动员1", "篮球运动员1", "篮球运动员1", "篮球运动员1", "篮球运动员1",
+				"篮球运动员1", "篮球运动员1","篮球运动员1","篮球运动员1", "篮球运动员1" };
+		players1 = new JList(player1);
+		players1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		players1.setFixedCellHeight(20);// 设置选项高度
+		players1.setVisibleRowCount(4); // 设置选项可见个数
+		JScrollPane scrollPane1 = new JScrollPane(); 
+		scrollPane1.setViewportView(players1); 
+		scrollPane1.setBounds(20,60,100,120); 
+		this.add(scrollPane1); 
+		
+		b1 = new JButton("上场");
+		b1.setBounds(140,60,60,30);
+		b2 = new JButton("下场");
+		b2.setBounds(140,100,60,30);
+		b3 = new JButton("比赛记录");
+		b3.setBounds(120,140,100,30);
+		this.add(b1);
+		this.add(b2);
+		this.add(b3);
+		b1.addActionListener(new B1());
+		
+		label2 = new JLabel("上场运动员");
+		label2.setBounds(220,20,100,20);
+		getContentPane().add(label2);
+		String[] player2 = { "篮球运动员1", "篮球运动员1", "篮球运动员1", "篮球运动员1", "篮球运动员1",
+				"篮球运动员1", "篮球运动员1","篮球运动员1","篮球运动员1", "篮球运动员1" };
+		players2 = new JList(player2);
+		players2.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		players2.setFixedCellHeight(20);// 设置选项高度
+		players2.setVisibleRowCount(4); // 设置选项可见个数
+		JScrollPane scrollPane2 = new JScrollPane(); 
+		scrollPane2.setViewportView(players2); 
+		scrollPane2.setBounds(220,60,100,120); 
+		this.add(scrollPane2); 
+
+		label3 = new JLabel("比赛得分：");
+		text1 = new JTextField(10);
+		label3.setBounds(20,200,70,30);
+		text1.setBounds(90,200,40,25);
+		text1.setEditable(false);
+		this.add(label3);
+		this.add(text1);
+		
+		label4 = new JLabel("犯规次数：");
+		text2 = new JTextField(10);
+		label4.setBounds(220,200,70,30);
+		text2.setBounds(290,200,40,25);
+		text2.setEditable(false);
+		this.add(label4);
+		this.add(text2);
+	}
+	class B1 implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			// TODO 自动生成的方法存根
+			int[] a = players1.getSelectedIndices();
+			
+			
+		}
+		
+	}
+	
+}
